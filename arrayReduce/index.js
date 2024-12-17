@@ -34,3 +34,26 @@ const segregate = (arr) => arr.reduce((prev, curr, currIdx, arr)=>{
 console.log('====================================');
 console.log(segregate(arr2));
 console.log('====================================');
+
+// piping pure fns
+
+const upperCase = (str) => {
+return str.toUpperCase();
+};
+const reverse = (str) => {
+return str.split('').reverse().join('');
+};
+const append = (str) => {
+return "Hello " + str;
+};
+
+const arr3 = [upperCase, reverse, append];
+
+const pipe = (arr, valueToBePassed) => arr.reduce((prevValue, currValue, currentIndex, _array)=>{
+  const nextValue = currValue(prevValue);
+  return nextValue;
+}, valueToBePassed)
+
+console.log('====================================');
+console.log(pipe(arr3, 'learnersbucket'));
+console.log('====================================');
